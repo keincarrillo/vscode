@@ -36,6 +36,9 @@
   "prettier.printWidth": 80,
   "prettier.arrowParens": "avoid",
 
+  // ✅ Evita que Prettier quiera formatear PHP
+  "prettier.disableLanguages": ["php"],
+
   // =========================
   // Terminal Integrado
   // =========================
@@ -62,17 +65,30 @@
   "python.analysis.autoImportCompletions": true,
 
   // =========================
+  // PHP + Intelephense
+  // =========================
+  // Arch: normalmente PHP está aquí
+  "php.validate.enable": true,
+  "php.validate.executablePath": "/usr/bin/php",
+
+  // Autocompletado/análisis según tu versión (ajústalo si usas otra)
+  "intelephense.environment.phpVersion": "8.3.0",
+
+  // (Opcional) reduce ruido si tienes vendor gigante
+  // "intelephense.files.exclude": ["**/vendor/**"],
+
+  // =========================
   // Extensiones / Extras
   // =========================
   "github.copilot.advanced": {
-    "authProvider": "github"
+    "authProvider": "github",
   },
   "github-enterprise.uri": "https://keincarrillo.ghe.com",
 
   "codeium.enableCodeLens": false,
   "codeium.enableConfig": {
     "*": true,
-    "http": true
+    "http": true,
   },
 
   "liveServer.settings.donotShowInfoMsg": true,
@@ -82,11 +98,17 @@
   // Language-specific
   // =========================
   "[java]": {
-    // "editor.defaultFormatter": "redhat.java",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[svg]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  }
+    "editor.formatOnSave": true,
+  },
+
+  // PHP: que Intelephense sea el formatter
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+  },
 }
